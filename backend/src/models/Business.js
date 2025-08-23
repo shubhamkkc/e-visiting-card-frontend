@@ -7,7 +7,7 @@ const ProductSchema = new mongoose.Schema(
 
 const BusinessSchema = new mongoose.Schema(
   {
-    slug: { type: String, unique: true, index: true, required: true },
+    slug: { type: String, unique: true, index: true },
     businessName: String,
     tagline: String,
     ownerName: String,
@@ -23,13 +23,13 @@ const BusinessSchema = new mongoose.Schema(
     vCardDownloadLink: String,
     profileUrl: String,
     specialities: String,
-    logoUrl: String,
     products: [ProductSchema],
     galleryImages: [String],
     theme: {
       primaryColor: { type: String, default: "#FF6A00" }
     },
-    views: { type: Number, default: 0 }
+    views: { type: Number, default: 0 },
+    logoUrl: { type: String, default: "" } // <— added
   },
   { timestamps: true }
 );

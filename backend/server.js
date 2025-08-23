@@ -46,9 +46,7 @@ const MONGO = process.env.MONGODB_URI;
 mongoose
   .connect(MONGO, { dbName: process.env.MONGODB_DB || "e_visiting_card" })
   .then(() => {
-    app.listen(PORT, () =>
-      console.log(`API running on :${PORT} (Mongo connected)`)
-    );
+    app.listen(PORT, "0.0.0.0", () => console.log("Listening on " + PORT));
   })
   .catch((e) => {
     console.error("Mongo connection failed", e);

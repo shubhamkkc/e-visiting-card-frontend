@@ -1,8 +1,27 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 
+// Can be overridden at build time with: --dart-define=API_BASE_URL=https://your-backend
+const String _envApi = String.fromEnvironment('API_BASE_URL');
+const String _prodApi = 'https://e-visiting-card-backend.onrender.com';
+const String _localApi = 'http://localhost:8080';
+
+// Use prod on web unless running on localhost
+
 class AppConstants {
+  // CHANGED: made static
+  static String get apiBaseUrl {
+    // Highest priority: build-time override
+    if (_envApi.isNotEmpty) return _envApi;
+    if (kIsWeb) {
+      final host = Uri.base.host;
+      if (host == 'localhost' || host == '127.0.0.1') return _localApi;
+      return _prodApi;
+    }
+    return _prodApi;
+  }
+
   // API
-  static const String apiBaseUrl = "http://192.168.1.34:8080"; // your PC IP
   static const String defaultBusinessSlug = "kanhaiya-lal-sons";
 
   // Fallback Business Details (used until API loads or if it fails)
@@ -21,7 +40,8 @@ class AppConstants {
   static const String natureOfBusiness = "Service provider, Event organisers";
 
   // Specialities as single multi-line string
-  static const String specialities = '''
+  static const String specialities =
+      '''
 • Ethical business policies
 • Affordable pricing
 • Reliable services

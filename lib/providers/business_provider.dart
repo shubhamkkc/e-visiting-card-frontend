@@ -13,9 +13,15 @@ class BusinessProvider extends ChangeNotifier {
   bool _incremented = false; // NEW: ensure +1 per load
 
   Future<void> loadForCurrentUrl() async {
-    final uri = Uri.base; // works on Flutter Web
-    final slug = uri.queryParameters['biz'] ?? 'business slug';
-    await load(slug);
+    final uri = Uri.base;
+    print("base url:${uri}"); // works on Flutter Web
+    final raw = uri.queryParameters['biz'];
+    // Normalize slug: trim, lower, spaces->hyphens; fallback to default constant
+    String normalized = (raw == null || raw.trim().isEmpty)
+        ? AppConstants.defaultBusinessSlug
+        : raw.trim().toLowerCase().replaceAll(RegExp(r"\s+"), '-');
+    print("slug param raw: $raw  => normalized: $normalized");
+    await load(normalized);
   }
 
   Future<void> load(String slug) async {

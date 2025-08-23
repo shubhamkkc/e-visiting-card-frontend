@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: evcard-api
+    rootDir: backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+      - key: MONGODB_DB
+        value: e_visiting_card
+      - key: CORS_ORIGIN
+        value: "*"
