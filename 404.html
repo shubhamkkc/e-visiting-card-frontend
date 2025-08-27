@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible" />
+  <meta name="description" content="Business card" />
+  <script>
+    // Dynamically set the <base> to the repo root for GitHub Pages.
+    (function(){
+      const repo = 'e-visiting-card-frontend';
+      const base = document.createElement('base');
+      base.href = '/' + repo + '/';
+      document.head.appendChild(base);
+    })();
+  </script>
+  <title>e_visiting_card</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <script src="flutter.js" defer></script>
+</head>
+<body>
+  <noscript>This app requires JavaScript.</noscript>
+  <script>
+    // Preserve the original path slug so Flutter can read it via location.pathname.
+    window.addEventListener('load', function() {
+      _flutter.loader.loadEntrypoint({
+        onEntrypointLoaded: function(engineInitializer) {
+          engineInitializer.initializeEngine().then(function(appRunner) { appRunner.runApp(); });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
