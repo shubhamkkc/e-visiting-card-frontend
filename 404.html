@@ -3,29 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta content="IE=Edge" http-equiv="X-UA-Compatible" />
-  <meta name="description" content="Business card" />
-  <script>
-    // Dynamically set the <base> to the repo root for GitHub Pages.
-    (function(){
-      const repo = 'e-visiting-card-frontend';
-      const base = document.createElement('base');
-      base.href = '/' + repo + '/';
-      document.head.appendChild(base);
-    })();
-  </script>
-  <title>e_visiting_card</title>
+  <meta name="description" content="E-Visiting Card - Digital Business Cards" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="E-Visiting Card">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  
+  <base href="/">
+  
+  <title>E-Visiting Card</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" type="image/png" href="favicon.png" />
+  <script>
+    // GitHub Pages SPA redirect for client-side routing
+    // When someone visits /business-name directly, GitHub serves this 404.html
+    // We need to preserve the path and redirect to root with the path intact
+    (function(){
+      var redirect = sessionStorage.redirect;
+      delete sessionStorage.redirect;
+      if (redirect && redirect != location.href) {
+        history.replaceState(null, null, redirect);
+      }
+    })();
+    
+    // Store current path for Flutter app to read
+    if (location.pathname !== '/' && !location.pathname.includes('.')) {
+      // This looks like a business slug, store it
+      sessionStorage.setItem('businessSlug', location.pathname.substring(1));
+      // Replace current history entry with root URL but keep the business slug accessible
+      history.replaceState({businessSlug: location.pathname.substring(1)}, '', '/');
+    }
+  </script>
   <script src="flutter.js" defer></script>
 </head>
 <body>
-  <noscript>This app requires JavaScript.</noscript>
+  <div id="loading" style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:Arial,sans-serif;">
+    <div>Loading your business card...</div>
+  </div>
   <script>
-    // Preserve the original path slug so Flutter can read it via location.pathname.
+    // Handle client-side routing for GitHub Pages
     window.addEventListener('load', function() {
       _flutter.loader.loadEntrypoint({
         onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) { appRunner.runApp(); });
+          engineInitializer.initializeEngine().then(function(appRunner) { 
+            appRunner.runApp(); 
+          });
         }
       });
     });
