@@ -1,0 +1,55 @@
+{
+    "name": "E-Visiting Card - Digital Business Cards",
+    "short_name": "E-Visiting Card",
+    "id": "/",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#0175C2",
+    "description": "Create professional digital business cards - Fast, modern e-visiting cards for your business",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "categories": ["business", "productivity"],
+    "lang": "en",
+    "scope": "/",
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "1024x1024",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "1024x1024",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "1024x1024",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "1024x1024",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "1024x1024",
+            "type": "image/png",
+            "form_factor": "wide"
+        },
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "1024x1024",
+            "type": "image/png",
+            "form_factor": "narrow"
+        }
+    ]
+}

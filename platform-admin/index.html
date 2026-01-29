@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Create professional digital business cards - Fast, modern e-visiting cards for your business">
+  <meta name="keywords" content="digital business card, visiting card, business card, e-visiting card, professional card">
+  <meta name="author" content="E-Visiting Card">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="E-Visiting Card - Digital Business Cards">
+  <meta property="og:description" content="Create professional digital business cards - Fast, modern e-visiting cards for your business">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="icons/Icon-512.png">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="E-Visiting Card - Digital Business Cards">
+  <meta name="twitter:description" content="Create professional digital business cards - Fast, modern e-visiting cards for your business">
+  <meta name="twitter:image" content="icons/Icon-512.png">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="E-Visiting Card">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png" id="favicon"/>
+
+  <title>E-Visiting Card - Digital Business Cards</title>
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Preload critical resources -->
+  <link rel="preload" href="assets/images/background.jpg" as="image">
+  <link rel="preload" href="assets/images/logo.jpg" as="image">
+
+  <script>
+    const serviceWorkerVersion = "1843391680";
+    
+    // Register service worker manually as backup
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('flutter_service_worker.js?v=1843391680')
+        .then(function(reg) {
+          console.log('Service Worker registered:', reg);
+        })
+        .catch(function(err) {
+          console.log('Service Worker registration failed:', err);
+        });
+    }
+  </script>
+  <script src="flutter.js" defer></script>
+</head>
+<body>
+  <script>
+    window.addEventListener('load', function(ev) {
+      // Download main.dart.js
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function(engineInitializer) {
+          engineInitializer.initializeEngine().then(function(appRunner) {
+            appRunner.runApp();
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

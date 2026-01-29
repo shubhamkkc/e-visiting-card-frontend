@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Redirecting...</title>
+  <script>
+    // GitHub Pages SPA redirect for client-side routing
+    // Redirects /path to /#/path so Flutter can handle it
+    var path = window.location.pathname;
+    if (path && path !== '/') {
+      // Preserve query parameters if any
+      var search = window.location.search;
+      window.location.replace('/#' + path + search);
+    }
+  </script>
+</head>
+<body>
+  Redirecting...
+</body>
+</html>
